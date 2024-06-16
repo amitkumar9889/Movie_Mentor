@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendations</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #ffffff;
+        }
+        h1 {
+            margin: 20px 0;
+            color: #ffffff;
+        }
+        .movie-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .movie-card {
+            margin: 10px;
+            text-align: center;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .movie-card h2 {
+            margin-bottom: 10px;
+        }
+        .movie-card img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recommended Movies</h1>
+    <div class="movie-container">
+        {% for name, poster, movie_id in zip(movie_names, movie_posters, movie_ids) %}
+            <div class="movie-card">
+                <h2 style="color:black">{{ name }}</h2>
+                <a href="/movie/{{ movie_id }}?selected_movie={{ selected_movie }}"><img src="{{ poster }}" alt="{{ name }}"></a>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="/">Back to Home</a>
+</body>
+</html>
